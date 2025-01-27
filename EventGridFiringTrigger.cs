@@ -30,9 +30,9 @@ namespace Company.Function {
       ServiceBusClient client = new ServiceBusClient(connectionString);
 
       //string queue = eventData.hit ? "hit" : "miss";
-      log.LogInformation($"Queque:{eventData.playerId}");
+      log.LogInformation($"Queque:{eventData.playerId.Trim()}");
 
-      ServiceBusSender sender = client.CreateSender(eventData.playerId);
+      ServiceBusSender sender = client.CreateSender(eventData.playerId.Trim());
 
       try {
         string messageBody = JsonConvert.SerializeObject(eventData);
