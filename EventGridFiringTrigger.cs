@@ -16,7 +16,7 @@ namespace Company.Function {
     [FunctionName("EventGridFiringTrigger")]
     public static async Task Run([EventGridTrigger] EventGridEvent eventGridEvent, ILogger log) {
       try {
-        var data = JsonConvert.DeserializeObject < EventData > (eventGridEvent.Data.ToString());
+        var data = JsonConvert.DeserializeObject <EventData> (eventGridEvent.Data.ToString());
         log.LogInformation($"PlayerId: {data.playerId}, Hit: {data.hit}, HitId: {data.hitId}");
         await insertSeviceBusMessage(data, log);
       } catch (Exception ex) {
