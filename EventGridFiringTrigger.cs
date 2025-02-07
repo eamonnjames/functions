@@ -32,7 +32,7 @@ namespace Company.Function {
       //string queue = eventData.hit ? "hit" : "miss";
       log.LogInformation($"Queque:{eventData.playerId.Trim()}");
 
-      ServiceBusSender sender = client.CreateSender(eventData.playerId.Trim());
+      ServiceBusSender sender = client.CreateSender(eventData.hitId.Trim());
 
       try {
         string messageBody = JsonConvert.SerializeObject(eventData);
@@ -52,7 +52,7 @@ namespace Company.Function {
   }
 
   public class EventData {
-    public string playerId {
+    public required string playerId {
       get;
       set;
     }
@@ -61,6 +61,20 @@ namespace Company.Function {
       set;
     }
     public string hitId {
+      get;
+      set;
+    }
+
+    public int gameId {
+      get;
+      set;
+    }
+
+    public int teamId {
+      get;
+      set;
+    }
+    public int userId {
       get;
       set;
     }
