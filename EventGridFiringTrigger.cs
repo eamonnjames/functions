@@ -39,20 +39,20 @@ namespace Company.Function {
         ServiceBusMessage message = new ServiceBusMessage(messageBody);
 
 
-       await sender.SendMessageAsync(message);
+      await sender.SendMessageAsync(message);
 
       } catch (Exception exception) {
         log.LogInformation($"{DateTime.Now} :: Exception: {exception.Message}");
       } finally {
-       await sender.DisposeAsync();
-       await client.DisposeAsync();
+      await sender.DisposeAsync();
+      await client.DisposeAsync();
       }
     }
 
   }
 
   public class EventData {
-    public required string playerId {
+    public string playerId {
       get;
       set;
     }
